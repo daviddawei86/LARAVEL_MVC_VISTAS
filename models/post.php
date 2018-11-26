@@ -2,7 +2,7 @@
 
 class Post {
 
-// definimos tres atributos
+// definimos todos los atributos
 // los declaramos como públicos para acceder directamente $post->author
     public $id;
     public $author;
@@ -44,6 +44,7 @@ class Post {
         return new Post($post['id'], $post['author'], $post['content'], $post['titulo'],$post['created'],$post['modified'],$post['imagen']);
     }
 
+ //Definimos el formato para la fecha a continuación hacemos la sentencia INSERT con los parametros y ejecutamos.
     public static function añadir($autor, $contenido,$titulo, $imagen) {
         $db = Db::getInstance();
        
@@ -60,6 +61,7 @@ class Post {
         $req->execute();
     }
     
+  // Definimos formato para la fecha y hacemos la sentencia update .
       public static function update($titulo,$autor, $contenido,$imagen,$id) {
         $db = Db::getInstance();
        
@@ -70,10 +72,10 @@ class Post {
 
     }
     
+    //Utilizando la id que enviamos por parametro para borrar el post
       public static function borrar($id) {
         $db = Db::getInstance();
-       
-        
+              
         $req = $db->prepare("DELETE FROM posts WHERE id=:id");
         $req->execute(array('id' => $id));
              
