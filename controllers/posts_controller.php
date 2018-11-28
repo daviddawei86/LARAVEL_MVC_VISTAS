@@ -65,6 +65,12 @@ class PostsController {
     //Cuando apretamos boton update indicaremos a routes ir a la función mostrarUpdate que este cargara la vista de mostrarUpdate.
     public function mostrarUpdate() {
 
+        if (!isset($_GET['id'])) {
+            return call('pages', 'error');
+        }
+// utilizamos el id para obtener el post correspondiente
+        $post = Post::find($_GET['id']);
+
         require_once('views/posts/mostrarUpdate.php');
     }
 
@@ -96,7 +102,7 @@ class PostsController {
                 echo "La imagen es demasiado grande ";
         }
 
-      //Envia los post a la función update en post.php , cuando hace el update vuelve a mostrar la lista de post.
+        //Envia los post a la función update en post.php , cuando hace el update vuelve a mostrar la lista de post.
         $post = Post::update($_POST["titulo"], $_POST["autor"], $_POST["contenido"], $_POST["imagen"], $_POST["id"]);
 
         $posts = Post::all();
@@ -111,7 +117,6 @@ class PostsController {
         $posts = Post::all();
         require_once('views/posts/index.php');
     }
-
 }
 ?>
 

@@ -49,7 +49,10 @@
             <?php require_once('routes.php'); ?>
             <footer>
 
+                   
                 <?php require 'footer.php' ?>
+
+
             </footer>
         </body>
     </html>
