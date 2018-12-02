@@ -1,6 +1,8 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
+
+
 <table id="cabezera">
 
     <td COLSPAN="5">
@@ -15,18 +17,19 @@
             </td>
 
             <td>
-                <a class="btn btn-success" href='?controller=posts&action=show&id=<?php echo $post->id; ?>'>Ver
+                <a class="btn btn-success" href='<?php echo constant('URL'); ?>posts/show&id=<?php echo $post->id; ?>'>Ver
                     contenido</a>
+               
 
             </td>
             <td>
-                <a class="btn btn-success" href='?controller=posts&action=mostrarUpdate&id=<?php echo $post->id; ?>'>Actualizar
+                <a class="btn btn-success" href='<?php echo constant('URL'); ?>posts/mostrarUpdate&id=<?php echo $post->id; ?>'>Actualizar
                     post</a>
 
             </td>
 
             <td>
-                <a class="btn btn-success" href='?controller=posts&action=Borrar&id=<?php echo $post->id; ?>'>Borrar
+                <a class="btn btn-success" href='<?php echo constant('URL'); ?>posts/Borrar&id=<?php echo $post->id; ?>'>Borrar
                     post</a>
 
             </td>

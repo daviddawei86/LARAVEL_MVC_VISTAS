@@ -1,11 +1,6 @@
 <table id="cabezera">
 
-    <tr>
-        <td>
-            <p><strong>Post #<?php echo $post->id; ?></strong></p>
-        </td>
-    </tr>
-    
+
     <tr>
         <td>
             <p><strong> Titulo : <?php echo $post->titulo; ?></strong></p>

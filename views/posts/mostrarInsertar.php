@@ -3,7 +3,8 @@
 
 <!-- Enviamos formulario con sus inputs enviando el posta&action que esta vez nos lleve a la función añadirInsert del controlador-->
 <table id="cabezera">
-    <form action="?controller=posts&action=añadirInsert" method="post" enctype="multipart/form-data">
+    <form action='<?php echo constant('URL'); ?>posts/añadirInsert' method="post" enctype="multipart/form-data">
+       
          <tr>
             <td>
                 <p><strong>Añadir titulo: <input type="text" name="titulo" /></strong></p>

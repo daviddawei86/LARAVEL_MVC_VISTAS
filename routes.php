@@ -15,13 +15,16 @@ function call($controller, $action) {
     }
 // llama al método guardado en $action
     $controller->{ $action }();
+  
 }
+
+
 
 // lista de controladores que tenemos y sus acciones
 // consideramos estos valores "permitidos"
 // agregando una entrada para el nuevo controlador y sus acciones.
 $controllers = array('pages' => ['home', 'error'],
-    'posts' => ['index', 'show','añadir','añadirInsert','mostrarUpdate','Update','Borrar']);
+    'posts' => ['index', 'show','añadir','comprobarImagen','añadirInsert','mostrarUpdate','Update','Borrar']);
 // verifica que tanto el controlador como la acción solicitados estén permitidos
 // Si alguien intenta acceder a otro controlador y/o acción, será redirigido al método de
 //error del controlador de pages.

@@ -4,9 +4,11 @@
 <table id="cabezera">
 
 
-    <form action="?controller=posts&action=Update" method="post" enctype="multipart/form-data">
+    <form action='<?php echo constant('URL'); ?>posts/Update' method="post" enctype="multipart/form-data">
+        
         <?php
         $id = $_GET['id'];
+   
         ?>
 
         <strong><input type="hidden" name="id" value=<?php echo $id; ?> readonly></strong>
@@ -31,6 +33,7 @@
         <tr>
             <td>
                 <p> <img src="/blog_php_mvc/uploads/<?php echo $post->imagen; ?>" alt="" height="300" width="400" align="middle" /></p>
+               
             </td>
         </tr>
 
