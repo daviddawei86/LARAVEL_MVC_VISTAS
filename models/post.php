@@ -35,7 +35,7 @@ class Post {
 
     public static function find($id) {
         $db = Db::getInstance();
-// nos aseguramos que $id es un entero
+
         $id = intval($id);
         $req = $db->prepare('SELECT * FROM posts WHERE id = :id');
 // preparamos la sentencia y reemplazamos :id con el valor de $id
@@ -61,22 +61,20 @@ class Post {
         $req->execute();
     }
 
+    //Comprobamos el tipo,nombre,tamaño de la imagen si todo es correcto subida la imagen en una ruta y lo devolvera.
     public static function comprobarImagen($nombre_img, $tipo, $tamano) {
 
-        //Si existe imagen y tiene un tamaño correcto
-        if (($nombre_img == !NULL) && ($_FILES['imagen']['size'] <= 900000000000)) {
-            //indicamos los formatos que permitimos subir a nuestro servidor
+        //Si existe imagen y tiene un tamaño correcto,indicamos los formatos que permitimos subir a nuestro servidor.
+        if (($nombre_img == !NULL) && ($_FILES['imagen']['size'] <= 900000000000)) {           
             if (($_FILES["imagen"]["type"] == "image/gif") || ($_FILES["imagen"]["type"] == "image/jpeg") || ($_FILES["imagen"]["type"] == "image/jpg") || ($_FILES["imagen"]["type"] == "image/png")) {
-                // Ruta donde se guardarán las imágenes que subamos
+                // Ruta donde se guardarán las imágenes que subamos.
                 $directorio = $_SERVER['DOCUMENT_ROOT'] . "/blog_php_mvc/uploads/";
-                // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
                 move_uploaded_file($_FILES['imagen']['tmp_name'], $directorio . $nombre_img);
             } else {
-                //si no cumple con el formato
                 echo "No se puede subir una imagen con ese formato ";
             }
         } else {
-            //si existe la variable pero se pasa del tamaño permitido
+
             if ($nombre_img == !NULL)
                 echo "La imagen es demasiado grande ";
         }
@@ -84,11 +82,11 @@ class Post {
         return $nombre_img;
     }
 
-    // Definimos formato para la fecha y hacemos la sentencia update .
+    // Definimos formato para la fecha y hacemos la sentencia update. Si la imagen no la cambiamos será la misma.
     public static function update($titulo, $autor, $contenido, $imagen, $id) {
         $db = Db::getInstance();
 
-        
+
         if ($imagen != "") {
             $timestamp = date('Y-m-d H:i:s');
             $req = $db->prepare("UPDATE posts SET modified=:modified, titulo=:titulo, imagen=:imagen, author=:author, content =:content WHERE id=:id");
@@ -111,7 +109,7 @@ class Post {
             $req->execute(array('id' => $id));
         }
     }
-
+   //Métodos para la paginacion , la funcionalidad no la hice.
     public function readAll($from_record_num, $records_per_page) {
 
         $query = "SELECT * FROM posts        

@@ -28,18 +28,18 @@ class PostsController {
         require_once('views/posts/mostrarInsertar.php');
     }
 
-//La función añadirInsert recibe los post de mostrarInsertar y hacemos la comprobación de la imagen.
+//La función añadirInsert recibe los post de mostrarInsertar y hacemos la comprobación de la imagen llamado su método.
     public function añadirInsert() {
 
         // Recibo los datos de la imagen
         $nombre_img = $_FILES['imagen']['name'];
         $tipo = $_FILES['imagen']['type'];
         $tamano = $_FILES['imagen']['size'];
-        
-        
-        $post = Post::comprobarImagen( $nombre_img,$tipo, $tamano );
-        
-        $_POST["imagen"]= $nombre_img;
+
+
+        $post = Post::comprobarImagen($nombre_img, $tipo, $tamano);
+
+        $_POST["imagen"] = $nombre_img;
 
 // Enviamos nuestros post a la función añadir en el php de post.php.Cuando inserte volvera a mostrarInsert.php
         $post = Post::añadir($_POST["autor"], $_POST["contenido"], $_POST["titulo"], $_POST["imagen"]);
@@ -47,32 +47,32 @@ class PostsController {
         require_once('views/posts/mostrarInsertar.php');
     }
 
-    //Cuando apretamos boton update indicaremos a routes ir a la función mostrarUpdate que este cargara la vista de mostrarUpdate.
+ //Cuando apretamos boton update indicaremos a routes ir a la función mostrarUpdate que este cargara la vista de mostrarUpdate.
     public function mostrarUpdate() {
 
         if (!isset($_GET['id'])) {
-          
+
             return call('pages', 'error');
         }
-// utilizamos el id para obtener el post correspondiente
+
         $post = Post::find($_GET['id']);
 
         require_once('views/posts/mostrarUpdate.php');
     }
 
-//La función Update recibe los post de mostrarUpdate y hacemos la comprobación de la imagen nueva.
+//La función Update recibe los post de mostrarUpdate y hacemos la comprobación de la imagen nueva. 
     public function Update() {
 
-           // Recibo los datos de la imagen
+
         $nombre_img = $_FILES['imagen']['name'];
         $tipo = $_FILES['imagen']['type'];
         $tamano = $_FILES['imagen']['size'];
-        
-        
-        $post = Post::comprobarImagen( $nombre_img,$tipo, $tamano );
-        
-        $_POST["imagen"]= $nombre_img;
-        
+
+
+        $post = Post::comprobarImagen($nombre_img, $tipo, $tamano);
+
+        $_POST["imagen"] = $nombre_img;
+
         //Envia los post a la función update en post.php , cuando hace el update vuelve a mostrar la lista de post.
         $post = Post::update($_POST["titulo"], $_POST["autor"], $_POST["contenido"], $_POST["imagen"], $_POST["id"]);
 
@@ -88,6 +88,7 @@ class PostsController {
         $posts = Post::all();
         require_once('views/posts/index.php');
     }
+
 }
 ?>
 

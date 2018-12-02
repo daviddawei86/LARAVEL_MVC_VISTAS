@@ -3,7 +3,7 @@
 
 <table id="cabezera">
 
-
+  
     <form action='<?php echo constant('URL'); ?>posts/Update' method="post" enctype="multipart/form-data">
         
         <?php

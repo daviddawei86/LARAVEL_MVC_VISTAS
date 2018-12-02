@@ -4,11 +4,11 @@
 <table id="cabezera">
     <tr>
         <th>
-          <!-- <a href='/blog_php_mvc'>Home</a> -->
+       
           <a href='<?php echo constant('URL'); ?>'>Home</a>
         </th>
         <th>
-          <!--  <a href='?controller=posts&action=index'>Posts</a>  -->
+         
             <a href='<?php echo constant('URL'); ?>posts/index'>Posts</a>
         </th>
         <th>
